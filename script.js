@@ -90,47 +90,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---------- Smooth Scroll for Navigation ----------
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // ---------- SPA Routing ----------
+    const pages = document.querySelectorAll('.page');
+    const desktopLinks = document.querySelectorAll('.nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function navigateTo(path, addToHistory = true) {
+        // Find matching page
+        let targetPage = document.querySelector(`.page[data-page="${path}"]`);
+        
+        // Default to home page if route not found
+        if (!targetPage) {
+            targetPage = document.querySelector('.page[data-page="/"]');
+            path = '/';
+        }
+
+        // Hide all pages and show target page
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+        targetPage.classList.add('active');
+
+        // Update active class on nav links
+        desktopLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === path) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === path) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu if open
+        if (menuBtn && mobileMenu) {
+            menuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll to top instantly
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        // Update history state
+        if (addToHistory) {
+            history.pushState({ path }, '', path);
+        }
+
+        // Trigger animations for elements on the active page
+        const animateEls = targetPage.querySelectorAll('.animate-on-scroll');
+        animateEls.forEach(el => {
+            setTimeout(() => {
+                el.classList.add('visible');
+                const children = el.querySelectorAll('.pillar-card, .toxic-card, .manifestation-item, .timeline-item, .mirror-q, .story-card');
+                children.forEach((child, index) => {
+                    child.style.transitionDelay = `${index * 0.1}s`;
+                    child.classList.add('visible');
+                });
+            }, 50);
+        });
+    }
+
+    // Intercept clicks on data-route links
+    document.addEventListener('click', (e) => {
+        const routeLink = e.target.closest('a[data-route]');
+        if (routeLink) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-                const navHeight = navbar.offsetHeight;
-                const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+            const path = routeLink.getAttribute('href');
+            navigateTo(path);
+        }
     });
 
-    // ---------- Active Nav Link Tracking ----------
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, {
-        threshold: 0.3,
-        rootMargin: '-100px 0px -50% 0px'
+    // Handle back/forward history navigation
+    window.addEventListener('popstate', (e) => {
+        const path = e.state ? e.state.path : window.location.pathname;
+        navigateTo(path, false);
     });
 
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
+    // Load initial route on startup
+    const initialPath = window.location.pathname;
+    navigateTo(initialPath, false);
 
     // ---------- Parallax on Hero Visual ----------
     const heroVisual = document.querySelector('.hero-visual');

@@ -24,16 +24,16 @@
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="nav-inner">
-            <a href="#hero" class="nav-logo">
+            <a href="/" class="nav-logo" data-route>
                 <span class="logo-icon">⧫</span>
                 <span class="logo-text">EWON</span>
             </a>
             <div class="nav-links">
-                <a href="#prologue" class="nav-link">Prologue</a>
-                <a href="#definition" class="nav-link">The Law</a>
-                <a href="#chapters" class="nav-link">Chapters</a>
-                <a href="#stories" class="nav-link">Stories</a>
-                <a href="#founder" class="nav-link">Founder</a>
+                <a href="/prologue" class="nav-link" data-route>Prologue</a>
+                <a href="/the-law" class="nav-link" data-route>The Law</a>
+                <a href="/chapters" class="nav-link" data-route>Chapters</a>
+                <a href="/stories" class="nav-link" data-route>Stories</a>
+                <a href="/founder" class="nav-link" data-route>Founder</a>
             </div>
             <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
                 <span></span>
@@ -46,16 +46,16 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-inner">
-            <a href="#prologue" class="mobile-link">Prologue</a>
-            <a href="#definition" class="mobile-link">The Law</a>
-            <a href="#chapters" class="mobile-link">Chapters</a>
-            <a href="#stories" class="mobile-link">Stories</a>
-            <a href="#founder" class="mobile-link">Founder</a>
+            <a href="/prologue" class="mobile-link" data-route>Prologue</a>
+            <a href="/the-law" class="mobile-link" data-route>The Law</a>
+            <a href="/chapters" class="mobile-link" data-route>Chapters</a>
+            <a href="/stories" class="mobile-link" data-route>Stories</a>
+            <a href="/founder" class="mobile-link" data-route>Founder</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero page active" id="hero" data-page="/">
         <div class="hero-content">
             <div class="hero-badge animate-in">
                 <span class="badge-dot"></span>
@@ -85,7 +85,7 @@
                     <span class="meta-value">Behavioral</span>
                 </div>
             </div>
-            <a href="#prologue" class="hero-scroll animate-in">
+            <a href="/prologue" class="hero-scroll animate-in" data-route>
                 <span>Begin Reading</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 5v14M19 12l-7 7-7-7"/>
@@ -101,7 +101,7 @@
     </section>
 
     <!-- Prologue -->
-    <section class="chapter-section" id="prologue">
+    <section class="chapter-section page" id="prologue" data-page="/prologue">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Prologue</span>
@@ -129,12 +129,18 @@
                     </blockquote>
                     <cite>— On the nature of EWON</cite>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/the-law" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter I: The Law Defined <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Definition Section -->
-    <section class="definition-section" id="definition">
+    <section class="definition-section page" id="definition" data-page="/the-law">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter I</span>
@@ -178,12 +184,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/chapters" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter II: The Psychology <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter II: The Psychology -->
-    <section class="chapter-section dark-chapter" id="chapters">
+    <section class="chapter-section dark-chapter page" id="chapters" data-page="/chapters">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter II</span>
@@ -228,12 +240,18 @@
                         <p>Each time the person walks away with nothing, they reinforce the behavior. The pain of emptiness becomes familiar — even comfortable. The loop tightens.</p>
                     </div>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/manifestations" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter III: Where It Manifests <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter III: Manifestations -->
-    <section class="chapter-section">
+    <section class="chapter-section page" id="manifestations" data-page="/manifestations">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter III</span>
@@ -314,12 +332,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/toxicity" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter IV: Why EWON is Toxic <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter IV: The Toxicity -->
-    <section class="chapter-section dark-chapter">
+    <section class="chapter-section dark-chapter page" id="toxicity" data-page="/toxicity">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter IV</span>
@@ -371,12 +395,18 @@
                         <p>No human being is perfect. No relationship matches the exact template in someone's mind. EWON forces people to discard real, meaningful connections because they don't match an imaginary ideal. The result is always the same: solitude.</p>
                     </div>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/anatomy" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter V: The Anatomy <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter V: The Anatomy -->
-    <section class="chapter-section">
+    <section class="chapter-section page" id="anatomy" data-page="/anatomy">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter V</span>
@@ -437,12 +467,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/paradox" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter VI: The Paradox <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter VI: The Paradox -->
-    <section class="chapter-section dark-chapter">
+    <section class="chapter-section dark-chapter page" id="paradox" data-page="/paradox">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter VI</span>
@@ -480,12 +516,18 @@
                     </blockquote>
                     <cite>— The EWON Paradox</cite>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/mirror" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Chapter VII: The Mirror <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Chapter VII: The Mirror -->
-    <section class="chapter-section">
+    <section class="chapter-section page" id="mirror" data-page="/mirror">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Chapter VII</span>
@@ -536,12 +578,18 @@
                         But honesty without flexibility is just another cage.
                     </p>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/epilogue" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">Epilogue: A Final Word <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Epilogue -->
-    <section class="chapter-section dark-chapter">
+    <section class="chapter-section dark-chapter page" id="epilogue" data-page="/epilogue">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">Epilogue</span>
@@ -568,12 +616,18 @@
                         <span class="closing-sub">A law observed and documented by <strong>AS</strong></span>
                     </p>
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/stories" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">12 Stories of EWON <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Stories Section -->
-    <section class="chapter-section" id="stories">
+    <section class="chapter-section page" id="stories" data-page="/stories">
         <div class="container">
             <div class="chapter-header animate-on-scroll">
                 <span class="chapter-number">The Chronicles</span>
@@ -845,12 +899,18 @@
                     </div>
 
                 </div>
+                <div class="page-navigation animate-on-scroll">
+                    <a href="/founder" class="btn-next" data-route>
+                        <span class="nav-direction">Next Chapter</span>
+                        <span class="nav-title">The Founder: AS <span class="nav-arrow">→</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Founder Section -->
-    <section class="founder-section" id="founder">
+    <section class="founder-section page" id="founder" data-page="/founder">
         <div class="container">
             <div class="founder-card animate-on-scroll">
                 <div class="founder-info">
@@ -877,9 +937,33 @@
                                     <stop offset="0%" style="stop-color:#c4b5fd"/>
                                     <stop offset="100%" style="stop-color:#818cf8"/>
                                 </linearGradient>
+                                <linearGradient id="triGrad3" x1="50%" y1="0%" x2="50%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f9a8d4"/>
+                                    <stop offset="100%" style="stop-color:#a78bfa"/>
+                                </linearGradient>
+                                <filter id="triGlow">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
                             </defs>
-                            <polygon class="tri tri-1" points="100,30 155,130 45,130" fill="none" stroke="url(#triGrad1)" stroke-width="2"/>
-                            <polygon class="tri tri-2" points="100,30 155,130 45,130" fill="none" stroke="url(#triGrad2)" stroke-width="2"/>
+                            <!-- Outer ring -->
+                            <circle class="tri-orbit" cx="100" cy="100" r="88" fill="none" stroke="rgba(167,139,250,0.08)" stroke-width="1" stroke-dasharray="4 8"/>
+                            <!-- Triangle 1: clockwise -->
+                            <polygon class="tri tri-1" points="100,22 160,138 40,138" fill="none" stroke="url(#triGrad1)" stroke-width="2" filter="url(#triGlow)"/>
+                            <!-- Triangle 2: counter-clockwise -->
+                            <polygon class="tri tri-2" points="100,22 160,138 40,138" fill="none" stroke="url(#triGrad2)" stroke-width="1.5" filter="url(#triGlow)"/>
+                            <!-- Triangle 3: slow clockwise, larger -->
+                            <polygon class="tri tri-3" points="100,15 170,145 30,145" fill="none" stroke="url(#triGrad3)" stroke-width="1" opacity="0.4"/>
+                            <!-- Triangle 4: fast counter-clockwise, smaller -->
+                            <polygon class="tri tri-4" points="100,35 145,128 55,128" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                            <!-- Center dot -->
+                            <circle cx="100" cy="100" r="3" fill="rgba(167,139,250,0.5)">
+                                <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Orbiting dots -->
+                            <circle class="orbit-dot dot-1" cx="100" cy="12" r="2" fill="#a78bfa"/>
+                            <circle class="orbit-dot dot-2" cx="100" cy="12" r="1.5" fill="#f87171"/>
                         </svg>
                         <span class="founder-initials">AS</span>
                     </div>
