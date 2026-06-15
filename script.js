@@ -111,6 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         targetPage.classList.add('active');
 
+        // Reset contact form state if loading the contact page
+        if (path === '/contact') {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('successState');
+            if (form) form.style.display = '';
+            if (success) success.style.display = 'none';
+        }
+
         // Update active class on nav links
         desktopLinks.forEach(link => {
             const href = link.getAttribute('href');
@@ -212,4 +220,38 @@ document.addEventListener('DOMContentLoaded', () => {
             glow.style.top = e.clientY + 'px';
         });
     }
+
+    // ---------- Contact Form Submission ----------
+    const contactForm = document.getElementById('contactForm');
+    const successState = document.getElementById('successState');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            if (submitBtn) {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                const btnText = submitBtn.querySelector('.submit-text');
+                if (btnText) btnText.textContent = 'Sending...';
+            }
+
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                if (successState) {
+                    successState.style.display = 'block';
+                    successState.classList.add('visible');
+                }
+                
+                // Reset form values for future entries
+                contactForm.reset();
+                if (submitBtn) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    const btnText = submitBtn.querySelector('.submit-text');
+                    if (btnText) btnText.textContent = 'Send Message ⧫';
+                }
+            }, 1200);
+        });
+    }
 });
+

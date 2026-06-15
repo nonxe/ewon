@@ -924,6 +924,11 @@
                     <p class="founder-bio">
                         AS brought this law into language, giving a name to what millions experience but few understand. The EWON Law stands as a contribution to the understanding of human psychology — a lens through which we can examine our own patterns of desire and decision.
                     </p>
+                    <div class="founder-actions animate-on-scroll">
+                        <a href="/contact" class="btn-contact" data-route>
+                            <span class="contact-icon">✉</span> Contact AS
+                        </a>
+                    </div>
                 </div>
                 <div class="founder-visual">
                     <div class="founder-pfp">
@@ -968,6 +973,57 @@
                         <span class="founder-initials">AS</span>
                     </div>
                     <div class="founder-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section page" id="contact" data-page="/contact">
+        <div class="container">
+            <div class="chapter-header animate-on-scroll">
+                <span class="chapter-number">Connect</span>
+                <h2 class="chapter-title">Reach Out</h2>
+                <div class="chapter-line"></div>
+            </div>
+            
+            <div class="contact-container animate-on-scroll">
+                <div class="contact-card">
+                    <div class="contact-intro">
+                        <p class="contact-lead">Have a query, an opinion, or a personal EWON story to share?</p>
+                        <p class="contact-sub">Submit your thoughts directly to the founder. Every submission is read and analyzed.</p>
+                    </div>
+                    
+                    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdDf6Da7PYjEkYt9jV3V6ieoS6_W-wqQWJ6-JtVqrjbF0T2JQ/formResponse" 
+                          method="POST" 
+                          target="hidden_iframe" 
+                          id="contactForm"
+                          class="contact-form">
+                        
+                        <div class="form-group">
+                            <label for="queryField" class="form-label">Write your query or opinion below</label>
+                            <textarea id="queryField" 
+                                      name="entry.1139902996" 
+                                      class="form-textarea" 
+                                      placeholder="Express your thoughts here..." 
+                                      required></textarea>
+                            <div class="form-glow"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span class="submit-glow"></span>
+                            <span class="submit-text">Send Message ⧫</span>
+                        </button>
+                    </form>
+                    
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                    
+                    <div class="contact-success" id="successState" style="display: none;">
+                        <div class="success-icon">⧫</div>
+                        <h3>Submission Sent</h3>
+                        <p>Thank you for sharing your thoughts. Your query/opinion has been successfully recorded under the EWON Chronicles.</p>
+                        <a href="/" class="btn-home" data-route>Return to Home</a>
+                    </div>
                 </div>
             </div>
         </div>
