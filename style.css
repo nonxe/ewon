@@ -928,8 +928,20 @@ img {
 }
 
 .toxic-icon {
-    font-size: 28px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--toxic-glow);
+    border-radius: 14px;
     margin-bottom: 16px;
+    color: var(--toxic-red);
+}
+
+.toxic-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 .toxic-card h4 {
@@ -1223,36 +1235,67 @@ img {
 .founder-visual {
     flex-shrink: 0;
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.founder-monogram {
-    width: 120px;
-    height: 120px;
-    border-radius: 30px;
-    background: linear-gradient(135deg, var(--accent), rgba(139, 92, 246, 0.8));
+.founder-pfp {
+    position: relative;
+    width: 160px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     z-index: 2;
 }
 
-.founder-monogram span {
-    font-size: 40px;
+.triangle-spinner {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+}
+
+.tri {
+    transform-origin: center;
+}
+
+.tri-1 {
+    animation: triSpin1 8s linear infinite;
+}
+
+.tri-2 {
+    animation: triSpin2 8s linear infinite;
+}
+
+@keyframes triSpin1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes triSpin2 {
+    from { transform: rotate(180deg); }
+    to { transform: rotate(540deg); }
+}
+
+.founder-initials {
+    position: relative;
+    z-index: 3;
+    font-size: 36px;
     font-weight: 800;
-    color: white;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--accent-bright), var(--text-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .founder-glow {
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
     animation: founderPulse 4s ease-in-out infinite;
@@ -1261,6 +1304,158 @@ img {
 @keyframes founderPulse {
     0%, 100% { transform: scale(1); opacity: 0.5; }
     50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* ---------- Stories Section ---------- */
+.stories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 56px;
+}
+
+.story-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-out);
+}
+
+.story-card:hover {
+    border-color: rgba(167, 139, 250, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+.story-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.story-header:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.story-number {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--accent-muted);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.story-meta {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.story-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.story-outcome {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    flex-shrink: 0;
+}
+
+.outcome-destroyed {
+    background: var(--toxic-glow);
+    color: var(--toxic-red);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.outcome-survived {
+    background: rgba(52, 211, 153, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.outcome-both {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--warm-amber);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.story-toggle {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: all 0.3s var(--ease-out);
+}
+
+.story-toggle svg {
+    transition: transform 0.3s var(--ease-out);
+    color: var(--text-tertiary);
+}
+
+.story-card.open .story-toggle svg {
+    transform: rotate(180deg);
+}
+
+.story-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease-out);
+}
+
+.story-card.open .story-body {
+    max-height: 2000px;
+}
+
+.story-body-inner {
+    padding: 28px 32px 36px;
+}
+
+.story-body-inner p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.story-body-inner p:last-child {
+    margin-bottom: 0;
+}
+
+.story-body-inner em {
+    font-family: var(--font-serif);
+    color: var(--accent-bright);
+}
+
+.story-body-inner strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 /* ---------- Footer ---------- */
@@ -1349,6 +1544,46 @@ img {
 
     .founder-name {
         font-size: 42px;
+    }
+
+    .founder-visual {
+        width: 160px;
+        height: 160px;
+    }
+
+    .founder-pfp {
+        width: 130px;
+        height: 130px;
+    }
+
+    .triangle-spinner {
+        width: 130px;
+        height: 130px;
+    }
+
+    .story-header {
+        padding: 20px 24px;
+        gap: 14px;
+    }
+
+    .story-number {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .story-title {
+        font-size: 15px;
+    }
+
+    .story-body-inner {
+        padding: 20px 24px 28px;
+    }
+
+    .story-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 
     .hero-meta {

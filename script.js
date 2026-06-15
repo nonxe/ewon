@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 // Stagger children if they exist
-                const children = entry.target.querySelectorAll('.pillar-card, .toxic-card, .manifestation-item, .timeline-item, .mirror-q');
+                const children = entry.target.querySelectorAll('.pillar-card, .toxic-card, .manifestation-item, .timeline-item, .mirror-q, .story-card');
                 children.forEach((child, index) => {
                     child.style.transitionDelay = `${index * 0.1}s`;
                     child.classList.add('visible');
@@ -63,6 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
+    });
+
+    // ---------- Story Card Accordion ----------
+    document.querySelectorAll('.story-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const card = header.closest('.story-card');
+            const isOpen = card.classList.contains('open');
+
+            // Close all other cards
+            document.querySelectorAll('.story-card.open').forEach(openCard => {
+                if (openCard !== card) {
+                    openCard.classList.remove('open');
+                }
+            });
+
+            // Toggle current
+            card.classList.toggle('open');
+
+            // Smooth scroll into view if opening
+            if (!isOpen) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
     });
 
     // ---------- Smooth Scroll for Navigation ----------
