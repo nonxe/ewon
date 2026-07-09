@@ -1,7 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/messages",
+      "destination": "/messages/index.html"
+    },
+    {
+      "source": "/messages/(.*)",
+      "destination": "/messages/$1"
+    },
+    {
+      "source": "/((?!messages).*)",
       "destination": "/index.html"
     }
   ]
